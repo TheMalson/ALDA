@@ -36,7 +36,7 @@ public class Main {
 		System.out.println("--------------------------------");
 		System.out.println("Einkaufstag: " + suggestion[0]);
 		System.out.println("Verkaufstag: " + suggestion[1]);
-		System.out.println("Profit: " + round(suggestion[2]));
+		System.out.println("Profit: " + round(suggestion[2]*100) + " %");
 
 	}
 	
@@ -49,24 +49,23 @@ public class Main {
 		//Calculate max. profit for all possible combinations
 		
 		double maxProfit=0; 	//Temporary maximum of profits
-		int iMax=0; 			//Buy-Suggestion (i)
-		int jMax=0;			//Sell-Suggestion (j)
+		int kaufTag=0; 			//Buy-Suggestion (i)
+		int verkaufTag=0;			//Sell-Suggestion (j)
+		int j=0;
 		
 		for(int i = 0; i<length;i++) {
-			
-			for(int j = i+1; j<length;j++) {
-				double tempMax = ((stockArray[j].getKurs() - stockArray[i].getKurs())/stockArray[i].getKurs()); 
+				double tempMax = ((stockArray[i].getKurs() - stockArray[j].getKurs())/stockArray[j].getKurs()); 
 				if(tempMax>maxProfit) {
 					maxProfit = tempMax;
-					iMax = i;
-					jMax = j;
+					kaufTag=j+1;
+					verkaufTag=i+1;
+				} else if (stockArray[i].getKurs()<stockArray[j].getKurs()) {
+					j=i;
 				}
-			}
-			
 		}
 		
-		suggestion[0] = (double)iMax+1; //Buy 	(day)
-		suggestion[1] = (double)jMax+1; //Sell	(day)
+		suggestion[0] = (double)kaufTag; //Buy 	(day)
+		suggestion[1] = (double)verkaufTag; //Sell	(day)
 		suggestion[2] = maxProfit;		//Profit in percent
 		
 		
