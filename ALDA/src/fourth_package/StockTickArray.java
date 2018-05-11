@@ -47,6 +47,7 @@ public class StockTickArray {
 		this.numbComparisons = 0;
 
 		while (correctInput != true) {
+			System.out.println("");
 			System.out.println("Bitte gewünschtes Sortierverfahren angeben:");
 			System.out.println("(A) Sortieren durch Einfügen mit sequentieller Suche");
 			System.out.println("(B) Sortieren durch Einfügen mit binärer Suche");

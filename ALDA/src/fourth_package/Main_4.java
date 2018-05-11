@@ -8,18 +8,22 @@ public class Main_4 {
 	public static void main(String[] args) {
 
 	Scanner s = new Scanner(System.in);	
-	System.out.println("Aufgebntyp wählen: (a) Testarray erstellen und sortieren oder (b) Vergleich der Sortierverfahren oder (c) Nach Firmensymbol suchen");
-
-	String answer = s.nextLine();
 	
-	if(answer.equals("a")){
-		firstTask();
-	} else if(answer.equals("b")) {
-		secondTask();
-	} else if(answer.equals("c")){
-		thirdTask();
+	String answer = "";
+	
+	while(answer.equals("e")!=true) {
+		System.out.println("Aufgebntyp wählen:");
+		System.out.println("(a) Testarray erstellen und sortieren oder (b) Vergleich der Sortierverfahren oder (c) Nach Firmensymbol suchen - (e) Exit\"");
+		answer = s.nextLine();
+		if(answer.equals("a")){
+			firstTask();
+		} else if(answer.equals("b")) {
+			secondTask();
+		} else if(answer.equals("c")){
+			thirdTask();
+		}
+		System.out.println("");
 	}
-	
 	}
 
 	
