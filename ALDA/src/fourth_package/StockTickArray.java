@@ -101,6 +101,8 @@ public class StockTickArray {
 			stockArray[j] = x;															//If not smaller than put selected Stock Tick on free spot in array
 		}
 		
+		
+		
 		//Sort by Name
 		
 		for(i = 1; i<stockArray.length;i++) {
@@ -112,7 +114,11 @@ public class StockTickArray {
 			}
 			stockArray[j] = x;															//If not before than put selected Stock Tick on free spot in array
 		}
+		
+		
 	}
+	
+
 	
 	private void binSort() {
 		
@@ -120,7 +126,8 @@ public class StockTickArray {
 		StockTick x;
 		
 		//Sort by course
-	
+		
+		this.numbComparisons = 0;
 		for (i=1;i<stockArray.length;i++) {
 			
 			x = stockArray[i];
