@@ -20,10 +20,20 @@ public class IntList {
 		next.setNext(head);
 		head = next;
 	}
-	
-	public void addNode(int value, Node next) {
+		
+	public void addNodeMiddle (int value, Node pre, Node suc) {
 		Node newNode = new Node(value);
-		newNode.setNext(next);
+		pre.setNext(newNode);
+		newNode.setNext(suc);
 	}
 	
+	public void addNodeEnd (int value) {
+		Node newNode = new Node(value);
+		Node tail = new Node();
+		
+		for(Node i = head; i.getNext()!=null;i=i.getNext()) {
+			tail = i;
+		}
+		tail.setNext(newNode);
+	}
 }
