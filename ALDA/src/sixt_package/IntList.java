@@ -30,9 +30,10 @@ public class IntList {
 	public void addNodeEnd (int value) {
 		Node newNode = new Node(value);
 		Node tail = new Node();
+		tail = head;
 		
-		for(Node i = head; i.getNext()!=null;i=i.getNext()) {
-			tail = i;
+		while(null !=tail.getNext()){
+			tail = tail.getNext();
 		}
 		tail.setNext(newNode);
 	}

@@ -33,63 +33,65 @@ public class main6 {
 		//First List Element
 		list2.addNode(list1.head.getValue());
 		list2.head.setNext(null);
-		currentNode = list1.head.getNext();
+		currentNode = list1.head;
 		
 		
 		//Rest of the Elements
+		do {
 		
-		for(Node currN = currentNode; currN.getNext()!=null;currN = currN.getNext()) {
-			
+			currentNode = currentNode.getNext();
 			comparisonNode = list2.head; 
+			boolean caseTrue = false;
 			
 			//Case 1: Node has to be on first position in list2
 			
-			if(currN.getValue()<=comparisonNode.getValue()) {							
+			if(currentNode.getValue()<=comparisonNode.getValue()) {							
 				
-				list2.addNode(currN.getValue());
-							
-			} else if(comparisonNode.getNext()!=null) {	
+				list2.addNode(currentNode.getValue());
+				caseTrue =true;			
+			} 
+			
+			//Case 2: Node has to be in the middle	
+			
+			else if(comparisonNode.getNext()!=null) {	
 						
 				for(Node compN = comparisonNode; compN.getNext()!=null;compN=compN.getNext()) {
-					
-					
-					//Case 2: Node has to be in the middle	
-					
-					if(currN.getValue()<=compN.getNext().getValue()) {
+										
+					if(currentNode.getValue()<=compN.getNext().getValue()) {
 						
-						list2.addNodeMiddle(currN.getValue(),compN,compN.getNext());
+						list2.addNodeMiddle(currentNode.getValue(),compN,compN.getNext());
 						compN=compN.getNext();
+						caseTrue=true;
 						break;
 						
-					} else {  //Case 3: Node has to be at the end
-						
-						list2.addNodeEnd(currN.getValue());
-						break;
-					}
+					} 
 								
 				} 
 				
-			} else { //Case 3: Node has to be at the end
+			} 
+			
+			//Case 3: Node has to be at the end
+			
+			if(caseTrue==false) { 
 				
-				list2.addNodeEnd(currN.getValue());
+				list2.addNodeEnd(currentNode.getValue());
 			}
 			
-			if(currN.getNext()==null) {
-				break;
-			}
-			
-		}
-		
+								
+		} while (currentNode.getNext()!=null);
 		
 	}
 	
 	public static void printList(IntList list) {
-		for(Node n = list.head; n.getNext()!=null; n=n.getNext()) {
-			System.out.println(n.getValue());
-			if(n.getNext()==null) {
-				System.out.println(n.getNext().getValue());	
-			}
-		}
+		Node head = list.head;
+		
+		System.out.println(head.getValue());
+		
+		do {
+			head = head.getNext();
+			System.out.println(head.getValue());
+			
+		} while (head.getNext()!=null);
 		
 	}
 	
